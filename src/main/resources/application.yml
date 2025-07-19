@@ -8,11 +8,15 @@ spring:
               uri: lb://JWT-SERVER
               predicates:
                 - Path=/auth/**
+              filters:
+                - AuthenticationFilter
 
             - id: user-service
               uri: lb://USER-SERVICE
               predicates:
                 - Path=/users/**
+              filters:
+                - AuthenticationFilter
 
   application:
     name: GATEWAY-SERVICE
